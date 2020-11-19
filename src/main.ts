@@ -1,6 +1,6 @@
 import * as core from '@actions/core'
 import * as fs from 'fs'
-import { upload, fileDelete } from './upload'
+import { upload, filesDelete } from './lib'
 
 const accessToken = core.getInput('dropbox_access_token')
 const file = core.getInput('file')
@@ -12,7 +12,7 @@ async function run() {
     const contents = await fs.promises.readFile(file)
     
     if (overwrite){
-      await fileDelete(path);
+      await filesDelete(path);
     }catch (error) {
       core.info(`Error deleting the file '${path}'`)
     }
