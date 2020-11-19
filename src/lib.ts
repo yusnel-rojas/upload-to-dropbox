@@ -9,3 +9,11 @@ export async function upload(
   const dropbox = new Dropbox({ accessToken, fetch })
   await dropbox.filesUpload({ path, contents })
 }
+
+export async function filesDelete(
+  path: string,
+  accessToken: string
+): Promise<void> {
+  const dropbox = new Dropbox({ accessToken, fetch })
+  await dropbox.filesDelete({ path })
+}
